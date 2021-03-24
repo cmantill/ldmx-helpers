@@ -32,7 +32,7 @@ sim.generators.append(myGun)
 p.sequence=[ sim ]
 
 ### Configurable parameters
-nEvents=100
+nEvents=10000
 seed=0
 outfile='out.root'
 env = os.environ
