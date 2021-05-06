@@ -1,10 +1,17 @@
-#!/bin/python3
-import os
-import json
+
+import argparse
+parser = argparse.ArgumentParser(description='')
+
+parser.add_argument('--run_number',type=int,default=1,help='ID number for this run.')
+parser.add_argument('--batch_job' ,type=int,default=1, help='Batch ID Number in the bsub system.')
+
+args = parser.parse_args() 
 
 from LDMX.Framework import ldmxcfg
 
-p=ldmxcfg.Process("v12")
+p=ldmxcfg.Process("sim")
+p.run = args.run_number
+p.maxEvents = 1000*1000 #  0.1M
 
 from LDMX.SimCore import simulator
 from LDMX.SimCore import generators
@@ -14,6 +21,7 @@ from LDMX.SimCore import bias_operators
 from LDMX.Biasing import include as includeBiasing
 from LDMX.Biasing import filters
 from LDMX.Biasing import util
+from LDMX.SimCore import examples
 
 p.libraries.append("libSimCore.so")
 
@@ -23,6 +31,7 @@ import LDMX.Ecal.ecal_hardcoded_conditions
 
 from LDMX.Hcal import HcalGeometry
 geom = HcalGeometry.HcalGeometryProvider.getInstance()
+import LDMX.Hcal.hcal_hardcoded_conditions
 
 from LDMX.Ecal import digi as ecal_digi
 from LDMX.Hcal import digi as hcal_digi
@@ -31,7 +40,7 @@ kaon_filter = particle_filter.PhotoNuclearProductsFilter("kaons_filter")
 kaon_filter.pdg_ids = [130, # K_L^0
                        310, # K_S^0
                        311, # K^-
-                       321  # K^+   
+                       321  # K^+
 ]
 
 sim = simulator.simulator("target_photonNuclear")
@@ -46,7 +55,7 @@ includeBiasing.library()
 sim.actions.extend([
      filters.TaggerVetoFilter(),
      filters.TargetBremFilter(),
-     filters.TargetPNFilter(),   
+     filters.TargetPNFilter(),
      util.TrackProcessFilter.photo_nuclear(),
      kaon_filter,
     ])
@@ -58,27 +67,4 @@ p.sequence=[ sim,
              hcal_digi.HcalRecProducer(),
              ]
 
-### Configurable parameters
-# 100k for 327 events in 4 minutes
-# 1M for 3233 in 26 minutes
-nEvents=100*1000
-seed=1
-outfile='out.root'
-env = os.environ
-if 'BATCH_SEEDOFFSET' in env: seed += int(env['BATCH_SEEDOFFSET'])
-if 'LSB_JOBINDEX' in env: seed += int(env['LSB_JOBINDEX'])
-if 'BATCH_NEVENTS' in env: nEvents = int(env['BATCH_NEVENTS'])
-if 'BATCH_OUTFILE' in env: outfile = env['BATCH_OUTFILE']
-
-print('Setting random seed to:', seed)
-print('Processing #events:', nEvents)
-print('Writing output file to:', outfile)
-
-p.run = seed
-sim.randomSeeds = [ 2*p.run , 2*p.run+1 ]
-p.outputFiles=[outfile]
-p.maxEvents = nEvents
-
-with open('parameterDump.json', 'w') as out_pamfile:
-     json.dump(p.parameterDump(),  out_pamfile, indent=4)
-
+p.outputFiles = [ 'pn_kaonfilter_1M_events_r%04d_b%d.root'%(p.run,args.batch_job) ]
