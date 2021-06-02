@@ -3,33 +3,22 @@ import awkward as ak
 import os
 import psutil
 
-SPHit_attrs= ['x', 'y', 'z', 'px', 'py', 'pz', 'e', 'id', 'pdgID', 'trackID']
-EcalRecHit_attrs = ['amp','e','t','x','y','z','isNoise']
-EcalSimHit_attrs = ['edep','e','t','x','y','z','layer']
-HcalRecHit_attrs = ['amp','e','x','y','z','pe','section','layer','strip','isNoise']
-HcalSimHit_attrs = ['edep','e','x','y','z','layer','section','strip']
 Target_attrs = ['e','pt']
-TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e','decay']
-TargetKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','momdecay']
+TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
+TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd']
 SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay']
-SimKaon_dau_attrs = ['pdgID','momtrkID','px','py','pz','e']
 
 branches = {
     "Proc": ['id'],
     "Sim_Kaon": SimKaon_attrs,
-    "Sim_Kaon_dau": SimKaon_dau_attrs,
     "Target_Electron": Target_attrs,
     "Target_Photon": Target_attrs,
     "Target_Kaon": TargetKaon_attrs,
-    "Target_Kaon_dau1": TargetKaondau_attrs,
-    "Target_Kaon_dau2": TargetKaondau_attrs,
-    "Target_Kaon_dau3": TargetKaondau_attrs,
-    "TargetSPHit": SPHit_attrs,
-    #"ECalSPHit": SPHit_attrs,
-    #"ECalRecHit": EcalRecHit_attrs,
-    #"ECalSimHit": EcalSimHit_attrs,
-    #"HCalRecHit": HcalRecHit_attrs,
-    #"HCalSimHit": HcalSimHit_attrs,
+    "TSP_Kaon_dau1": TSPKaondau_attrs,
+    "TSP_Kaon_dau2": TSPKaondau_attrs,
+    "TSP_Kaon_dau3": TSPKaondau_attrs,
+    "TSP_Kaon_dau4": TSPKaondau_attrs,
+
 }
 
 def getData(fnames="", treeName="Events", chunks=False):
