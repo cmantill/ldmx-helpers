@@ -5,12 +5,14 @@ import psutil
 
 Target_attrs = ['e','pt']
 TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
-TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd']
+TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd','z']
 SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay']
-
+SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome']
 branches = {
     "Proc": ['id'],
     "Sim_Kaon": SimKaon_attrs,
+    "Sim_Kaon_dau1": SimKaon_dau_attrs,
+    "Sim_Kaon_dau2": SimKaon_dau_attrs,
     "Target_Electron": Target_attrs,
     "Target_Photon": Target_attrs,
     "Target_Kaon": TargetKaon_attrs,
