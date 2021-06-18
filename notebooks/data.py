@@ -4,14 +4,14 @@ import os
 import psutil
 
 Target_attrs = ['e','pt']
-TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e','mfromdau','mfromdautrk']
+TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
 TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd','z']
-SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone','mfromdau']
+SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
 SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone']
 branches = {
     "Proc": ['id'],
     "n": ['Sim_Kaon'],
-    "nTSP": ['_Kaon'],
+    #"nTSP": ['Kaon'],
     "Sim_Kaon": SimKaon_attrs,
     "Sim_Kaon_dau1": SimKaon_dau_attrs,
     "Sim_Kaon_dau2": SimKaon_dau_attrs,
