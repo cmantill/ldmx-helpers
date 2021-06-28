@@ -8,10 +8,14 @@ TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
 TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd','z']
 SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
 SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone']
+SimLambda_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
+
 branches = {
     "Proc": ['id'],
-    "n": ['Sim_Kaon'],
-    #"nTSP": ['Kaon'],
+    "n": ['Sim_Kaon','Sim_Lambda'],
+    "Sim_Lambda": SimLambda_attrs,
+    "Sim_Lambda_dau1": SimLambda_dau_attrs,
+    "Sim_Lambda_dau2": SimLambda_dau_attrs,
     "Sim_Kaon": SimKaon_attrs,
     "Sim_Kaon_dau1": SimKaon_dau_attrs,
     "Sim_Kaon_dau2": SimKaon_dau_attrs,
