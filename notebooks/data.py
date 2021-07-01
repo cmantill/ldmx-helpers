@@ -4,12 +4,13 @@ import os
 import psutil
 
 Target_attrs = ['e','pt']
+TargetElectron_attrs = ['e','pt','px','py','pz']
 TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
 #TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd','z']
-SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
+SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone','electronpx','electronpy','electronpz']
 SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone']
 SimLambda_attrs = ['pdgID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
-SimLambda_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone']
+SimLambda_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone','momdecay']
 
 branches = {
     "Proc": ['id'],
@@ -20,7 +21,7 @@ branches = {
     "Sim_Kaon": SimKaon_attrs,
     "Sim_Kaon_dau1": SimKaon_dau_attrs,
     "Sim_Kaon_dau2": SimKaon_dau_attrs,
-    "Target_Electron": Target_attrs,
+    "Target_Electron": TargetElectron_attrs,
     "Target_Photon": Target_attrs,
     "Target_Kaon": TargetKaon_attrs,
     #"TSP_Kaon_dau1": TSPKaondau_attrs,
