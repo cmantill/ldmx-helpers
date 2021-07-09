@@ -12,7 +12,7 @@ SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone
 SimLambda_attrs = ['pdgID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
 SimLambda_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone','momdecay']
 SimParticle_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay']
-SimParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome']
+SimParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','momdecay']
 
 branches = {
     "Proc": ['id'],
