@@ -13,13 +13,16 @@ SimLambda_attrs = ['pdgID','px','py','pz','e','mass','ndau','vx','vy','vz','deca
 SimLambda_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone','momdecay']
 SimParticle_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay']
 SimParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','momdecay']
+SimPNParticle_attrs = ['pdgID','px','py','pz','e','mass','vx','vy','vz','electrone']
 
 branches = {
     "Proc": ['id'],
-    "n": ['Sim_Particle'] #,'Sim_Lambda'],
-    "Sim_Particle": SimParticle_attrs,
-    "Sim_Particle_dau1": SimParticle_dau_attrs,
-    "Sim_Particle_dau2": SimParticle_dau_attrs,
+    #"n": ['Sim_Particle'] #,'Sim_Lambda'],
+    "n": ['Sim_PNParticle']
+    "Sim_PNParticle": SimPNParticle_attrs, 
+    #"Sim_Particle": SimParticle_attrs,
+    #"Sim_Particle_dau1": SimParticle_dau_attrs,
+    #"Sim_Particle_dau2": SimParticle_dau_attrs,
     #"Sim_Lambda": SimLambda_attrs,
     #"Sim_Lambda_dau1": SimLambda_dau_attrs,
     #"Sim_Lambda_dau2": SimLambda_dau_attrs,
