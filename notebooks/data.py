@@ -21,7 +21,7 @@ branches = {
     #"n": ['Sim_Particle'] #,'Sim_Lambda'],
     "n": ['Sim_PNParticle']
     "Sim_PNParticle": SimPNParticle_attrs,
-    "SimPNParticle_dau": SimPNParticle_dau_attrs,
+    "Sim_PNParticle_dau": SimPNParticle_dau_attrs,
     #"Sim_Particle": SimParticle_attrs,
     #"Sim_Particle_dau1": SimParticle_dau_attrs,
     #"Sim_Particle_dau2": SimParticle_dau_attrs,
