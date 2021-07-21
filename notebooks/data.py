@@ -19,7 +19,7 @@ SimPNParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','mom
 branches = {
     "Proc": ['id'],
     #"n": ['Sim_Particle'] #,'Sim_Lambda'],
-    "n": ['Sim_PNParticle']
+    "n": ['Sim_PNParticle'],
     "Sim_PNParticle": SimPNParticle_attrs,
     "Sim_PNParticle_dau": SimPNParticle_dau_attrs,
     #"Sim_Particle": SimParticle_attrs,
