@@ -3,43 +3,30 @@ import awkward as ak
 import os
 import psutil
 
-Target_attrs = ['e','pt']
-TargetElectron_attrs = ['e','pt','px','py','pz']
-TargetKaon_attrs = ['px','py','pz','e','pt','pdgID','electron_e']
-#TSPKaondau_attrs = ['e','px','py','pz','pdgID','mompdgID','electrone','mome','gd','z']
-SimKaon_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone','electronpx','electronpy','electronpz']
-SimKaon_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone']
-SimLambda_attrs = ['pdgID','px','py','pz','e','mass','ndau','vx','vy','vz','decay','electrone']
-SimLambda_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','electrone','momdecay']
+# for Chloe's studies
 SimParticle_attrs = ['pdgID','trkID','px','py','pz','e','mass','ndau','vx','vy','vz','decay']
 SimParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','momdecay']
 SimPNParticle_attrs = ['pdgID','px','py','pz','e','mass','vx','vy','vz','electrone']
 SimPNParticle_dau_attrs = ['pdgID','z','px','py','pz','e','mompdgID','mome','momdecay','electrone']
 
+# for Lukas's studies
+SimParticle_attrs = ['pdgID','trkID','mass','e','kine','px','py','pz','endx','endy','endz','vx','vy','vz']
+EcalRecHit_attrs = ['amp','e','t','x','y','z']
+EcalInfo_attrs = ['frontmaxSP_e','frontmaxSP_p','backmaxSP_e','backmaxSP_p']
+HcalRecHit_attrs = ['layer','strip','section','e','x','y','z','PE']
+HcalInfo_attrs = ['sumPE']
+                    
 branches = {
-    "Proc": ['id'],
-    #"n": ['Sim_Particle'] #,'Sim_Lambda'],
-    "n": ['Sim_PNParticle'],
-    "Sim_PNParticle": SimPNParticle_attrs,
-    "Sim_PNParticle_dau1": SimPNParticle_dau_attrs,
-    "Sim_PNParticle_dau2": SimPNParticle_dau_attrs,
-    #"Sim_Particle": SimParticle_attrs,
-    #"Sim_Particle_dau1": SimParticle_dau_attrs,
-    #"Sim_Particle_dau2": SimParticle_dau_attrs,
-    #"Sim_Lambda": SimLambda_attrs,
-    #"Sim_Lambda_dau1": SimLambda_dau_attrs,
-    #"Sim_Lambda_dau2": SimLambda_dau_attrs,
-    #"Sim_Kaon": SimKaon_attrs,
-    #"Sim_Kaon_dau1": SimKaon_dau_attrs,
-    #"Sim_Kaon_dau2": SimKaon_dau_attrs,
-    #"Target_Electron": TargetElectron_attrs,
-    #"Target_Photon": Target_attrs,
-    #"Target_Kaon": TargetKaon_attrs,
-    #"TSP_Kaon_dau1": TSPKaondau_attrs,
-    #"TSP_Kaon_dau2": TSPKaondau_attrs,
-    #"TSP_Kaon_dau3": TSPKaondau_attrs,
-    #"TSP_Kaon_dau4": TSPKaondau_attrs,
-
+    #"Proc": ['id'],
+    #"n": ['Sim_PNParticle'],
+    #"Sim_PNParticle": SimPNParticle_attrs,
+    #"Sim_PNParticle_dau1": SimPNParticle_dau_attrs,
+    #"Sim_PNParticle_dau2": SimPNParticle_dau_attrs,
+    "Sim_Particle": SimParticle_attrs,
+    "Ecal_RecHit": EcalRecHit_attrs,
+    "Hcal_RecHit": HcalRecHit_attrs,
+    "Ecal": EcalInfo_attrs,
+    "Hcal": HcalInfo_attrs,
 }
 
 def getData(fnames="", treeName="Events", chunks=False):
